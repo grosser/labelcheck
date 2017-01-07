@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+	
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"><title>Live Query Test</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.labelcheck.js"></script>
+				
+		<script type="text/javascript">
+		$(document).ready(function(){
+			alert($('.row').labelcheck().size()+' rows');
+			alert($('.row2').labelcheck({
+				'click':function(){alert('clicked!')},
+				'label_selector':'div',
+				'check_selector':'.my_input'
+			}).size()+' rows');
+			alert($('.row3').labelcheck({
+				'click':function(){alert('no double event...')}
+			}).size()+' rows');
+		});
+		
+		</script>
+		
+		</head><body>
+	
+	<h4>Out of the box</h4>
+	<p>
+		<div class="row">
+			<label>Test</label> <input type="checkbox" name="test" value="test">
+		</div>
+		<div class="row">
+			<label>Test</label> <input type="checkbox" name="test" value="test">
+		</div>
+		<div class="row">
+			<label>Test</label> <input type="checkbox" name="test" value="test">
+		</div>
+		<div class="row">
+			<label>Number 1</label> <input type="radio" name="test" value="test">
+		</div>
+		<div class="row">
+			<label>Number 2</label> <input type="radio" name="test" value="test">
+		</div>
+		<div class="row">
+			<label>Number 3</label> <input type="radio" name="test" value="test">
+		</div>
+		<div class="row">
+			<h5>does not work -&gt; TODO?</h5>
+			<label>Test</label> <input type="radio" name="test" value="test">
+			<label>Test</label> <input type="radio" name="test" value="test">
+		</div>
+		<h5>Click left or right!</h5>
+		<div class="row">
+			<label>Left</label> <input type="radio" name="test" value="test_lr"><label>Right</label> 
+		</div>
+		<div class="row">
+			<label>Left</label> <input type="radio" name="test" value="test_lr"><label>Right</label> 
+		</div>
+	</p>
+
+	<h4>With callback and selectors</h4>	
+	<p>
+		<div class="row2">
+			<div>not labelchecked</div> <input type="checkbox" name="test" value="test">
+		</div>
+		<div class="row2">
+			<div>labelchecked</div> <input class="my_input" type="radio" name="test_select" value="test">
+		</div>
+		<div class="row2">
+			<div>labelchecked</div> <input class="my_input" type="radio" name="test_select" value="test">
+		</div>
+	</p>
+	
+	<h4>misplaced label</h4>
+	<p>
+	<div class="row3">
+		<label>surrounding <input type="checkbox" name="test" value="test"> label </label>
+	</div>
+	</p>
+	
+</body></html>
